@@ -26,6 +26,20 @@ async function  conexionLista() {
         document.getElementById("app").innerHTML += "<img src= " + data [i].image +  ">" ;
     }
 }
+async function filtro(unTipo) {
+    try {
+        const respuesta = await fetch(unTipo);
+        const datos = await respuesta.json();
+
+        const pokemonesFiltrados = datos;
+        console.log(pokemonesFiltrados); // antes decía 'pole', que no está definido
+
+    } catch (error) {
+        console.error("Error al filtrar por tipo:", error);
+        document.getElementById("app").innerHTML = `<p>Error al cargar Pokémon de tipo "${unTipo}".</p>`;
+    }
+}
+
 
 conexionLista()
 </script>
