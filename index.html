@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<main id="app">
+<button onclick="filtro('https://fakestoreapi.com/products/{id}')"  >fire</button>
+<button onclick="filtro('https://fakestoreapi.com/products/categories')"  >water</button>
+</main>
+<script>
+    let pokemones = [];
+let totalPokes = 21; /* debe agregarse uno mas ya q el indice comienza en 0 */
+
+async function  conexionLista() {
+    const res = await fetch('https://fakestoreapi.com/products/')
+    const data = await res.json()
+    pokemones = data;
+    /*mostrarLista(pokemones)*/
+    
+    for(var i =0;i<totalPokes;i++){
+        console.log(pokemones[i].title);
+        document.getElementById("app").innerHTML += "<p>" + [i] + pokemones[i].title + "</p>"
+        document.getElementById("app").innerHTML += "<img src= " + data [i].image +  ">" ;
+    }
+}
+
+conexionLista()
+</script>
+</body>
+</html>
